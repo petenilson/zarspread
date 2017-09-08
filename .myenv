@@ -1,0 +1,2 @@
+DEBUG=on
+DATABASE_URL=sqlite:///my-local-sqlite.db
