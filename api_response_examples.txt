@@ -1,0 +1,45 @@
+"""
+ bitfinex XBT price in USD
+    https://api.bitfinex.com/v2/ticker/tBTCUSD
+
+response:
+    [
+        4567.8,
+        16.7770791,
+        4567.8,
+        12.74414776,
+        -232.2,
+        -0.0484,
+        4567.8,
+        46374.6575428,
+        4970,
+        4530
+]
+
+luno XBT price in ZAR
+    https://api.mybitx.com/api/1/ticker?pair=XBTZAR
+
+response:
+    {
+        "timestamp":1504361873104,
+        "bid":"66562.00",
+        "ask":"66591.00",
+        "last_trade":"66562.00",
+        "rolling_24_hour_volume":"598.905659",
+        "pair":"XBTZAR"
+}
+
+fixer.io USD price in ZAR
+    http://api.fixer.io/latest?symbols=USD,ZAR
+
+response:
+    {
+        "base":"EUR",
+        "date":"2017-09-01",
+        "rates":
+            {
+                "USD":1.192,
+                "ZAR":15.418
+        }
+}
+"""

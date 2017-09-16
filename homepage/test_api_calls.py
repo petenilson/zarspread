@@ -1,6 +1,6 @@
 from django.test import TestCase
-from home_page.api_calls import get_data, insert_prices
-from home_page.models import Tick
+from homepage.api_calls import get_data, insert_prices
+from homepage.models import Tick
 
 class ApiCalls(TestCase):
 

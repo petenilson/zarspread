@@ -1,6 +1,6 @@
 import requests
 import logging
-from home_page.models import Tick
+from homepage.models import Tick
 
 log = logging.getLogger('ApiCalls')
 timeout= (3, 3)  # connect, read
@@ -27,17 +27,17 @@ def get_data(url, timeout=timeout):
 
 def get_usd_zar(data):
     zar_price = data['rates']['ZAR']
-    return zar_price
+    return float(zar_price)
 
 
 def get_xbt_zar(data):
     zar_price = data['ask']
-    return zar_price
+    return float(zar_price)
 
 
 def get_xbt_usd(data):
     usd_price = data[0]
-    return usd_price
+    return float(usd_price)
 
 
 def insert_prices(usd_zar, xbt_zar, xbt_usd):
@@ -60,7 +60,7 @@ def update_prices():
 
     xbt_usd_data = get_data(XBT_USD_URL)
     xbt_usd_price = get_xbt_usd(xbt_usd_data)
-    log.debug('xbt_zar_price: {}'.format(xbt_usd_price))
+    log.debug('xbt_usd_price: {}'.format(xbt_usd_price))
 
     insert_prices(
         usd_zar=usd_zar_price,

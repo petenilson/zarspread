@@ -12,8 +12,7 @@ html, body {
 .content {
   text-align: left;
   position: relative;
-  top: 40%;
-  transform: translateY(-40%);
+  padding-top: 50px;
 }
 .content h1 {
   margin-left: 0px;
@@ -35,6 +34,38 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 .rates {
+  position: relative;
+  min-height: 100%;
 }
 .spread {
+}
+/* Graph stuff */
+.graph{
+  position: relative;
+}
+.graph svg {
+  margin: 0 auto;
+}
+/* Style the lines by removing the fill and applying a stroke */
+.line {
+    fill: none;
+    stroke: white;
+    stroke-width: 3;
+}
+.axis path {
+  display: none;
+}
+
+.axis text {
+  fill: white;
+}
+
+.axis line {
+  stroke: white;
+}
+
+/* Style the dots by assigning a fill and stroke */
+.dot {
+    fill: white;
+    stroke: #fff;
 }

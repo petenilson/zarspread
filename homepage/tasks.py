@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 from celery.task.schedules import crontab
 from celery.decorators import periodic_task
-from home_page.utils import update_prices
+from homepage.utils import update_prices
 
 
 @periodic_task(
