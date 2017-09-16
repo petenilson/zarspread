@@ -14,7 +14,7 @@ def update():
 
 # keep the heroku app running
 @periodic_task(
-    run_every=(crontab(minute='*/1')),
+    run_every=(crontab(minute='*/25')),
     name="keep_awake",
     ignore_result=True
 )
