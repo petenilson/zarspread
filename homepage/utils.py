@@ -5,9 +5,15 @@ from homepage.models import Tick
 log = logging.getLogger('ApiCalls')
 timeout= (3, 3)  # connect, read
 
+SITE_URL = 'https://checkthespread.herokuapp.com'
+
 USD_ZAR_URL = 'http://api.fixer.io/latest?base=USD'
 XBT_ZAR_URL = 'https://api.mybitx.com/api/1/ticker?pair=XBTZAR'
 XBT_USD_URL = 'https://api.bitfinex.com/v2/ticker/tBTCUSD'
+
+def wake_site(url=SITE_URL):
+    r = requests.get(url)
+    log.debug('wake site response: {}'.format(r.status_code))
 
 
 def get_data(url, timeout=timeout):
