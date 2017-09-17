@@ -1,8 +1,7 @@
-
+celerybeat-schedule
 *.pyc
 db.sqlite3
 venv
 __pycache__
 .env
-celerybeat-schedule
 .DS_Store
