@@ -102,8 +102,9 @@ html, body {
     stroke: #fff;
 }
 .tooltip {
-  color: white;
+  color: #2F425A;
   font-family: 'Roboto', sans-serif;
-  background-color: grey;
-  padding: 1px 2px;
+  background-color: #F9DC5C;
+  padding: 1px 3px;
+  border-radius: 3px;
 }
