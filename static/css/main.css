@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-    background-color: #4A9595;
+    background-color: #2F425A;
 }
 .viewport {
     height: 100%;
@@ -9,22 +9,24 @@ html, body {
   padding-top: 10px;
   margin-left: 5px;
 }
+.header {
+  padding-top: 25px;
+  padding-left: 30px;
+}
+.header h4 {
+  font-weight: 300;
+  color: #D1D1D1;
+  font-family: 'Roboto', sans-serif;
+}
 .content {
   text-align: left;
   position: relative;
-  padding-top: 50px;
 }
 .content h1 {
   margin-left: 0px;
   font-size: 14em;
   font-family: 'Oswald', sans-serif;
-  color: #D1D1D1;
-}
-.content h4 {
-  font-weight: 300;
-  color: #D1D1D1;
-  margin-left: 15px;
-  font-family: 'Roboto', sans-serif;
+  color: #F9DC5C;
 }
 .rates p {
   font-weight: 300;
@@ -38,6 +40,26 @@ html, body {
   min-height: 100%;
 }
 .spread {
+}
+.footer {
+  background-color: #D1D1D1;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px 25px;
+  font-size: 14px;
+}
+.footer p {
+  display: inline;
+  color: #2F425A;
+}
+.footer a {
+  font-family: 'Roboto', sans-serif;
+  color: #2F425A;
+  margin: 0 15px;
+}
+.footer img {
+  margin: 0 5px;
 }
 /* Graph stuff */
 .graph{
@@ -57,15 +79,23 @@ html, body {
 }
 
 .axis text {
-  fill: white;
+  fill: #D1D1D1;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
 }
 
 .axis line {
-  stroke: white;
+  stroke: #D1D1D1;
 }
 
 /* Style the dots by assigning a fill and stroke */
 .dot {
     fill: white;
     stroke: #fff;
+}
+.tooltip {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  background-color: grey;
+  padding: 1px 2px;
 }

@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Luno Spread</title>
+    <title>Check The Spread</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -15,9 +15,11 @@
 
     <!-- Content -->
     <div class='container viewport'>
+      <div class='row header'>
+        <h4>Current Luno Spread:</h4>
+      </div>
       <div class='row content align-items-center'>
         <div class="col-sm-6 spread">
-          <h4>Current Luno Spread:</h3>
           <h1>{{ data.spread }}%</h1>
         </div>
         <div class="col-sm-6 rates text-nowrap">
@@ -31,6 +33,16 @@
 
       </div>
     </div>
+    <div class='footer row'>
+      <a href='https://github.com/petenilson'>
+        <img src="{% static 'img/GitHub-Mark-32px.png' %}" height="32">
+        View Source on GitHub
+      </a>
+      <a href='#'>
+        <img src="{% static 'img/btc-color.png' %}" height="32">
+        Buy me a coffee : 1JQaJWP9zSc3oGSnD8tkTFeQQPXn9uHnMR
+      </a>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -38,14 +50,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script>
-      // get the width of the bootstrap container
 
-
-
-      // 2. Use the margin convention practice
+      // Use the margin convention practice
       var margin = {top: 50, right: 50, bottom: 50, left: 50}
         , container = d3.select('.container').node()
-        , width = container.getBoundingClientRect().width
+        , width = container.getBoundingClientRect().width - 150
         , height = 150;
 
 
@@ -58,6 +67,7 @@
 
       var x_axis = d3.axisBottom(xScale);
       var y_axis = d3.axisLeft(yScale)
+        .tickSize(-width)
         .ticks(4);
 
       // 7. d3's line generator
@@ -72,7 +82,7 @@
       });
 
       var element = d3.select('.container').node();
-      // 1. Add the SVG to the page and employ #2
+      // 1. Add the SVG to the page
       var svg = d3.select(".graph").append("svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
@@ -89,6 +99,10 @@
           .call(x_axis)
         .select(".domain")
           .remove();
+
+      var focus = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
       // 4. Call the y axis in a group tag
       svg.append("g")
@@ -108,7 +122,20 @@
           .attr("class", "dot") // Assign a class for styling
           .attr("cx", function(d){ return xScale(d.date)} )
           .attr("cy", function(d) { return yScale(d.high) })
-          .attr("r", 5);
+          .attr("r", 5)
+          .on("mouseover", function(d) {
+          focus.transition()
+            .duration(200)
+            .style("opacity", 1);
+          focus.html(d.high)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+          })
+        .on("mouseout", function(d) {
+          focus.transition()
+            .duration(500)
+            .style("opacity", 0);
+          });
     </script>
   </body>
 </html>
