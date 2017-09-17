@@ -30,18 +30,22 @@
       </div>
       <!-- Graph -->
       <div class="row graph align-items-center">
-
+        <svg>
+        </svg>
+        <p id='title'> Spread High For The Last 24hrs
       </div>
     </div>
-    <div class='footer row'>
-      <a href='https://github.com/petenilson'>
-        <img src="{% static 'img/GitHub-Mark-32px.png' %}" height="32">
-        View Source on GitHub
-      </a>
-      <a href='#'>
-        <img src="{% static 'img/btc-color.png' %}" height="32">
-        Buy me a coffee : 1JQaJWP9zSc3oGSnD8tkTFeQQPXn9uHnMR
-      </a>
+    <div class='footer'>
+      <div class='content'
+        <a href='https://github.com/petenilson'>
+          <img src="{% static 'img/GitHub-Mark-32px.png' %}" height="32">
+          View Source on GitHub
+        </a>
+        <a href='#'>
+          <img src="{% static 'img/btc-color.png' %}" height="32">
+          Buy me a coffee : 1JQaJWP9zSc3oGSnD8tkTFeQQPXn9uHnMR
+        </a>
+      </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -83,7 +87,7 @@
 
       var element = d3.select('.container').node();
       // 1. Add the SVG to the page
-      var svg = d3.select(".graph").append("svg")
+      var svg = d3.select(".graph svg")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -102,7 +106,8 @@
 
       var focus = d3.select("body").append("div")
         .attr("class", "tooltip")
-        .style("opacity", 0);
+        .style("opacity", 0)
+        .style("display", "none");
 
       // 4. Call the y axis in a group tag
       svg.append("g")
@@ -126,7 +131,8 @@
           .on("mouseover", function(d) {
           focus.transition()
             .duration(200)
-            .style("opacity", 1);
+            .style("opacity", 1)
+            .style("display", 'inline');
           focus.html(d.high)
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY - 28) + "px");

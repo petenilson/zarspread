@@ -24,7 +24,7 @@ html, body {
 }
 .content h1 {
   margin-left: 0px;
-  font-size: 14em;
+  font-size: 10em;
   font-family: 'Oswald', sans-serif;
   color: #F9DC5C;
 }
@@ -50,7 +50,6 @@ html, body {
   font-size: 14px;
 }
 .footer p {
-  display: inline;
   color: #2F425A;
 }
 .footer a {
@@ -61,12 +60,21 @@ html, body {
 .footer img {
   margin: 0 5px;
 }
+.footer .content{
+  display: table;
+  margin: 0 auto;
+}
 /* Graph stuff */
-.graph{
+.graph {
   position: relative;
 }
 .graph svg {
   margin: 0 auto;
+}
+.graph #title{
+  margin: 0 auto;
+  color: #D1D1D1;
+
 }
 /* Style the lines by removing the fill and applying a stroke */
 .line {
