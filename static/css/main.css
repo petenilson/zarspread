@@ -97,7 +97,13 @@ textarea {
    Author's custom styles
    ========================================================================== */
 body {
+  position: relative;
   background: #27476E;
+  min-height: 100%;
+  margin: 0 0;
+  padding-bottom: 6rem;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .container {
 }
@@ -170,10 +176,10 @@ body {
 
 .footer {
  background-color: #FBFDF3;
- position: absolute;
- bottom: 0;
  width: 100%;
  font-size: 14px;
+ position: absolute;
+ bottom: 0;
 }
 .footer p {
  color: #2F425A;
@@ -335,14 +341,27 @@ body {
    Modify as content requires.
    ========================================================================== */
 @media only screen and (max-width: 576px) {
-   .container {
-     margin-left: 10px;
-     margin-right: 10px;
-   }
    .info {
-     width: 49%;
+     width: 48%;
      margin-top: 20px;
      margin-bottom: 20px;
+     overflow: auto;
+   }
+   .info-number {
+     font-size: 1.5rem;
+   }
+   .info-description {
+     font-size: 1rem;
+   }
+   .footer {
+     text-align: center;
+     line-height: 2rem;
+   }
+   .info-responsive {
+     border-left: none;
+   }
+   #github-link a {
+     display: none
    }
 }
 @media only screen and (min-width: 576px) and (max-width: 768px)  {
