@@ -1,147 +1,210 @@
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Check The Spread</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto:300,400" rel="stylesheet">
-  </head>
-  <body>
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Check The Spread</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Content -->
-    <div class='container viewport'>
-      <div class='row header'>
-        <h4>Current Luno Spread:</h4>
-      </div>
-      <div class='row content align-items-center'>
-        <div class="col-sm-6 spread">
-          <h1>{{ data.spread }}%</h1>
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto:300,400" rel="stylesheet">
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class='container'>
+          <div class='header'>
+            <span>
+            <h4>Luno Spread</h4>
+            </span >
+            <span id="github-link">
+            <a href='https://github.com/petenilson'>
+              <img src="{% static 'img/GitHub-Mark-32px.png' %}" height="32">
+              View Source on GitHub
+            </a>
+           </span>
+            <hr>
+          </div>
+          <div class='content'>
+            <div class="info">
+              <span class='info-description'>LUNO SPREAD</span>
+              <span class='info-symbol'>%</span>
+              <span class='info-number'>{{ data.spread }}</span>
+            </div>
+            <div class="info info-vertical-line">
+              <span class='info-description'>BTCUSD</span>
+              <span class='info-symbol'>$</span>
+              <span class='info-number'>{{ data.xbtusd }}</span>
+            </div>
+            <div class="info info-vertical-line">
+              <span class='info-description'>USDZAR</span>
+              <span class='info-symbol'>R</span>
+              <span class='info-number'>{{ data.usdzar }}</span>
+            </div>
+            <div class="info info-vertical-line">
+              <span class='info-description'>BTCZAR</span>
+              <span class='info-symbol'>R</span>
+              <span class='info-number'>{{ data.xbtzar }}</span>
+            </div>
+            <div class="graph">
+            </div>
+          </div>
+          <!-- Graph -->
+
         </div>
-        <div class="col-sm-6 rates text-nowrap">
-          <p><strong>BTCUSD:</strong> ${{ data.xbtusd }} |
-          <p><strong>USDZAR:</strong> R{{ data.usdzar }} |
-          <p><strong>BTCZAR:</strong> R{{ data.xbtzar }}
+        <div class='footer'>
+          <span>
+              <img src="{% static 'img/btc-color.png' %}" height="32">
+              Buy me a coffee : 1JQaJWP9zSc3oGSnD8tkTFeQQPXn9uHnMR
+              </img>
+          </span>
         </div>
-      </div>
-      <!-- Graph -->
-      <div class="row graph align-items-center">
-        <svg>
-        </svg>
-        <p id='title'> Spread High For The Last 24hrs
-      </div>
-    </div>
-    <div class='footer'>
-      <div class='content'
-        <a href='https://github.com/petenilson'>
-          <img src="{% static 'img/GitHub-Mark-32px.png' %}" height="32">
-          View Source on GitHub
-        </a>
-        <a href='#'>
-          <img src="{% static 'img/btc-color.png' %}" height="32">
-          Buy me a coffee : 1JQaJWP9zSc3oGSnD8tkTFeQQPXn9uHnMR
-        </a>
-      </div>
-    </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"</script>
+        <script src="{% static 'js/plugins.js' %}"</script>
+        <script>
+          var dataset = {{ data.historical|safe }};
+          // Use the margin convention practice
+          var margin = {top: 50, right: 40, bottom: 50, left: 40},
+            width, // width gets defined below
+            height = 250 - margin.top - margin.bottom;
 
-      // Use the margin convention practice
-      var margin = {top: 50, right: 50, bottom: 50, left: 50}
-        , container = d3.select('.container').node()
-        , width = container.getBoundingClientRect().width - 150
-        , height = 150;
+          // Add the SVG to the page
+          var svg = d3.select(".graph")
+              .append('svg')
+              .attr("height", height + margin.top + margin.bottom)
 
+          var artboard = svg.append("g")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      var parseTime = d3.timeParse("%Y-%m-%d-%HT");
-
-      var xScale = d3.scaleTime()
-        .rangeRound([0, width]);
-      var yScale = d3.scaleLinear()
-          .range([height, 0]);
-
-      var x_axis = d3.axisBottom(xScale);
-      var y_axis = d3.axisLeft(yScale)
-        .tickSize(-width)
-        .ticks(4);
-
-      // 7. d3's line generator
-      var line = d3.line()
-          .x(function(d) { return xScale(d.date); }) // set the x values for the line generator
-          .y(function(d) { return yScale(d.high); }) // set the y values for the line generator
-          .curve(d3.curveMonotoneX); // apply smoothing to the line
-
-      var dataset = {{ data.historical|safe }};
-      dataset.forEach(function(d) {
-        d.date = parseTime(d.date);
-      });
-
-      var element = d3.select('.container').node();
-      // 1. Add the SVG to the page
-      var svg = d3.select(".graph svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-      xScale.domain(d3.extent(dataset, function(d) { return d.date; }));
-      yScale.domain([0, d3.max(dataset, function(d) { return d.high; })]);
-
-      // 3. Call the x axis in a group tag
-      svg.append("g")
-          .attr("class", "axis")
-          .attr("transform", "translate(0," + height + ")")
-          .call(x_axis)
-        .select(".domain")
-          .remove();
-
-      var focus = d3.select("body").append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0)
-        .style("display", "none");
-
-      // 4. Call the y axis in a group tag
-      svg.append("g")
-          .attr("class", "axis")
-          .call(y_axis)
-        .selectAll(".tick:not(:first-of-type) line").attr("stroke", "#777").attr("stroke-dasharray", "2,2");
-      // 9. Append the path, bind the data, and call the line generator
-      svg.append("path")
-          .datum(dataset) // 10. Binds data to the line
-          .attr("class", "line") // Assign a class for styling
-          .attr("d", line) // 11. Calls the line generator
-
-      // 12. Appends a circle for each datapoint
-      svg.selectAll(".dot")
-          .data(dataset)
-        .enter().append("circle") // Uses the enter().append() method
-          .attr("class", "dot") // Assign a class for styling
-          .attr("cx", function(d){ return xScale(d.date)} )
-          .attr("cy", function(d) { return yScale(d.high) })
-          .attr("r", 5)
-          .on("mouseover", function(d) {
-          focus.transition()
-            .duration(200)
-            .style("opacity", 1)
-            .style("display", 'inline');
-          focus.html(d.high)
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY - 28) + "px");
-          })
-        .on("mouseout", function(d) {
-          focus.transition()
-            .duration(500)
-            .style("opacity", 0);
+          var parseTime = d3.timeParse("%Y-%m-%d-%HT");
+          dataset.forEach(function(d) {
+            d.date = parseTime(d.date);
           });
-    </script>
-  </body>
+
+          // Append the path, bind the data, but don't call the line generator just yet
+          var path = artboard.append("path")
+            .data([dataset]); // 10. Binds data to the line
+
+
+          var line_path = artboard.append("path")
+            .data([dataset])
+            .attr("class", "line")
+
+          var xScale = d3.scaleTime();
+          var yScale = d3.scaleLinear()
+              .range([height, 0]);
+
+          var x_axis = d3.axisBottom(xScale);
+          var y_axis = d3.axisLeft(yScale)
+            .ticks(4);
+
+          // d3's line generator
+          var line = d3.line();
+
+          var area = d3.area()
+
+          xScale.domain(d3.extent(dataset, function(d) { return d.date; }));
+          yScale.domain([0, d3.max(dataset, function(d) { return d.high; })]);
+
+          // 3. Call the x axis in a group tag
+          var x_axis_element = artboard.append("g")
+              .attr("class", "axis")
+              .attr("transform", "translate(0," + height + ")");
+              // dont call the x_axis here as we want our graph to response to
+              // changes of the width of the container
+
+          var focus = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0)
+            .style("display", "none");
+
+          // Call the y axis in a group tag
+          var y_axis_element = artboard.append("g")
+              .attr("class", "axis")
+
+          // Drawing
+
+          function draw_chart() {
+
+            // reset the width
+            width = parseInt(d3.select('.graph').style('width'), 10) - margin.left - margin.right;
+
+            // set the svg dimensions
+            svg.attr("width", width + margin.left + margin.right);
+
+            // set the new xScale range
+            xScale.range([0, width]);
+
+            // give the x_axis the new scale
+            x_axis.scale(xScale);
+            // draw the new x axis
+            x_axis_element.call(x_axis);
+            // give the y_axis the new tick_size
+            y_axis.tickSize(-width);
+            // draw the new y axis
+            y_axis_element.call(y_axis)
+              .selectAll(".tick:not(:first-of-type) line").attr("stroke", "#777").attr("stroke-dasharray", "2,2");
+
+            // specify new properties for the line
+            line.x(function(d) { return xScale(d.date); }) // set the x values for the line generator
+              .y(function(d) { return yScale(d.high); }); // set the y values for the line generator
+              //.curve(d3.curveMonotoneX); // apply smoothing to the line
+
+            area.x(function(d) { return xScale(d.date); }) // set the x values for the line generator
+              .y0(height)
+              .y1(function(d) { return yScale(d.high); }); //
+
+            // draw the path based on the line created above
+            path.attr("fill", "#EAF8BF")
+              .attr("d", area);
+
+            line_path.attr("d", line);
+            // Appends a circle for each datapoint
+            // First remove any existing circles
+            artboard.selectAll(".dot").remove()
+
+            var dot = artboard.selectAll(".dot")
+              .data(dataset);
+
+            dot.enter().append("circle") // Uses the enter().append() method
+              .attr("class", "dot") // Assign a class for styling
+              .attr("cx", function(d){ return xScale(d.date)} )
+              .attr("cy", function(d) { return yScale(d.high) })
+              .attr("r", 3)
+              .on("mouseover", function(d) {
+              focus.transition()
+                .duration(200)
+                .style("opacity", 1)
+                .style("display", 'inline');
+              focus.html(d.high)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+              })
+            .on("mouseout", function(d) {
+              focus.transition()
+                .duration(500)
+                .style("opacity", 0);
+              });
+
+            d3.select("#graph").append("p")
+              .attr("class", "tooltip")
+              .style("opacity", 0)
+              .style("display", "none");
+          }
+          // call this once to draw the chart initially
+          draw_chart();
+          window.addEventListener('resize', draw_chart);
+        </script>
+    </body>
 </html>
