@@ -1,4 +1,4 @@
-celerybeat-schedule
+celerybeat*
 *.pyc
 db.sqlite3
 venv
