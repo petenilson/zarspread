@@ -5,7 +5,7 @@ from homepage.utils import update_prices, wake_site
 
 
 @periodic_task(
-    run_every=(crontab(minute='*/1')),
+    run_every=(crontab(minute='*/15')),
     name="update_prices",
     ignore_result=True
 )
