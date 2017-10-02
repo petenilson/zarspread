@@ -14,7 +14,7 @@
 
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
         <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto:300,400" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto:300,400|Didact+Gothic" rel="stylesheet">
     </head>
     <body>
         <!--[if lte IE 9]>
@@ -22,17 +22,20 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div class='container'>
+        <div class='page-container'>
           <div class='header'>
+            <div class='header-content'
             <span>
-            <h4>Luno Spread</h4>
-            </span >
-            <span id="github-link">
-            <a href='https://github.com/petenilson'>
-              <img src="{% static 'img/GitHub-Mark-32px.png' %}" height="32">
-              View Source on GitHub
-            </a>
-           </span>
+            <img src="{% static 'img/symbol.png' %}" height="32">
+            <h4><b>ZAR</b>SPREAD</h4>
+              </span >
+              <span id="github-link">
+              <a href='https://github.com/petenilson'>
+                <img src="{% static 'img/GitHub-Mark-Light-32px.png' %}" height="32">
+                View Source on GitHub
+              </a>
+             </span>
+          </div>
             <hr>
           </div>
           <div class='content'>
@@ -62,13 +65,7 @@
           <!-- Graph -->
 
         </div>
-        <div class='footer' style="display: none;">
-          <span>
-              <img src="{% static 'img/btc-color.png' %}" height="32">
-              Buy me a coffee : 1JQaJWP9zSc3oGSnD8tkTFeQQPXn9uHnMR
-              </img>
-          </span>
-        </div>
+
         <script src="https://d3js.org/d3.v4.min.js"></script>
         <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"</script>
         <script src="{% static 'js/plugins.js' %}"</script>
@@ -77,7 +74,7 @@
           // Use the margin convention practice
           var margin = {top: 50, right: 40, bottom: 50, left: 40},
             width, // width gets defined below
-            height = 250 - margin.top - margin.bottom;
+            height = 350 - margin.top - margin.bottom;
 
           // Add the SVG to the page
           var svg = d3.select(".graph")
@@ -158,15 +155,16 @@
 
             // specify new properties for the line
             line.x(function(d) { return xScale(d.date); }) // set the x values for the line generator
-              .y(function(d) { return yScale(d.high); }); // set the y values for the line generator
-              //.curve(d3.curveMonotoneX); // apply smoothing to the line
+              .y(function(d) { return yScale(d.high); }) // set the y values for the line generator
+              .curve(d3.curveMonotoneX); // apply smoothing to the line
 
             area.x(function(d) { return xScale(d.date); }) // set the x values for the line generator
               .y0(height)
-              .y1(function(d) { return yScale(d.high); }); //
+              .y1(function(d) { return yScale(d.high); })
+              .curve(d3.curveMonotoneX); //
 
             // draw the path based on the line created above
-            path.attr("fill", "#EAF8BF")
+            path.attr("fill", "#DE6262")
               .attr("d", area);
 
             line_path.attr("d", line);
