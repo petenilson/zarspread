@@ -365,15 +365,25 @@ body {
    Modify as content requires.
    ========================================================================== */
 @media only screen and (max-width: 576px) {
+    .header {
+      margin-top: 10px;
+    }
     .content {
       margin: 0 10px;
     }
     .header-content {
       margin: 0 10px;
     }
+    .header-content h4 {
+      font-size: 1.5rem;
+    }
+    .header hr {
+      margin-bottom: 10px;
+      margin-top: 3px;
+    }
    .info {
      margin-top: 15px;
-     margin-bottom: 15px;
+     margin-bottom: 10px;
      overflow: auto;
      width: 50%;
    }
